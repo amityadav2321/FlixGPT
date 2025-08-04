@@ -1,47 +1,49 @@
-import React, { useEffect } from 'react'
-import Login from './Login'
-import Browse from './Browse'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import Login from './Login';
+import Browse from './Browse';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useDispatch } from 'react-redux';
-import { addUser, removeUser } from '../utils/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser, removeUser, setLoading } from '../utils/userSlice';
+import ProtectedRoute from './ProtectedRoute';
 
 const Body = () => {
-    const dispatch=useDispatch();
-    const appRouter = createBrowserRouter([
-        {
-            path:"/",
-            element:<Login/>,
-        },
-        {
-            path:"/browse",
-            element:<Browse/>
-        }
-    ])
+  const dispatch = useDispatch();
+  const { loading } = useSelector((store) => store.user);
 
-    useEffect(()=>{
-                onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    // User is signed in, see docs for a list of available properties
-                    // https://firebase.google.com/docs/reference/js/auth.user
-                    const {uid,email,displayName} = user;
-                    dispatch(addUser({uid:uid,email:email,displayName:displayName}));
+  useEffect(() => {
+    dispatch(setLoading(true)); // start loading
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid, email, displayName }));
+      } else {
+        dispatch(removeUser());
+      }
+    });
 
-                    // ...
-                } else {
-                    // User is signed out
-                    dispatch(removeUser());
-                }
-                });
+    return () => unsubscribe();
+  }, []);
 
-    },[])
+  const appRouter = createBrowserRouter([
+    {
+      path: '/',
+      element: <Login />,
+    },
+    {
+      path: '/browse',
+      element: (
+        <ProtectedRoute>
+          <Browse />
+        </ProtectedRoute>
+      ),
+    },
+  ]);
 
-  return (
-    <div>
-        <RouterProvider router={appRouter}/>
-    </div>
-  )
-}
+  if (loading) return <div className="text-white p-10">Loading...</div>; // or a spinner
 
-export default Body
+  return <RouterProvider router={appRouter} />;
+};
+
+export default Body;
