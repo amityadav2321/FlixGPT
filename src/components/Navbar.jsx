@@ -5,6 +5,8 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleGptSearchView } from '../utils/gptSlice';
+import { SUPPORTED_LANG } from '../utils/constants';
+import { changeLanguage } from '../utils/configSlice';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -15,6 +17,10 @@ const Navbar = () => {
   const handleShowGPTSearch = () => {
     dispatch(toggleGptSearchView());
   };
+
+  const handleLanguageChange=(e)=>{
+    dispatch(changeLanguage(e.target.value))
+  }
 
   return (
     <div>
@@ -36,6 +42,16 @@ const Navbar = () => {
         {/* Right: Welcome + Buttons */}
         {user && (
           <div className="flex items-center space-x-4">
+       {showGptSearch && <select
+        className="bg-black text-white border border-white rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-red-600" onChange={handleLanguageChange}
+      >
+        {SUPPORTED_LANG.map((lang) => (
+          <option key={lang.identifier} value={lang.identifier} className="text-white">
+            {lang.name}
+          </option>
+        ))}
+      </select>}
+  
             <span className="text-sm hidden md:inline">
               Welcome, <b>{user.displayName}</b>
             </span>
@@ -43,7 +59,7 @@ const Navbar = () => {
               className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 text-white font-medium px-4 py-1 rounded text-sm shadow transition duration-200"
               onClick={handleShowGPTSearch}
             >
-              GPT Search
+             {showGptSearch ? "Homepage" : "GPT Search"} 
             </button>
             <button
               onClick={() => {
