@@ -3,7 +3,7 @@ import { FaPlay } from 'react-icons/fa'; // Font Awesome Play icon
 
 function Videotitle({ title, overview }) {
   return (
-    <div className='w-screen aspect-video pt-[15%] px-24 absolute text-white bg-gradient-to-r from-black'>
+    <div className='w-screen top-0 left-0 aspect-video pt-[15%] px-24 absolute text-white bg-gradient-to-r from-black'>
 
       <h1 className='font-extrabold text-5xl my-4'>{title}</h1>
       <p className='text-lg w-[50%] my-4 '>{overview}</p>

@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import appStore from './utils/appStore'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="overflow-x-hidden">

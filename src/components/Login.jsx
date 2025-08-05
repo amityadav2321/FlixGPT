@@ -6,6 +6,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { IMG_BACKGROUND } from "../utils/constants";
 
 function Login() {
   
@@ -38,7 +39,7 @@ function Login() {
       {/* Background Image */}
       <img
         className="absolute h-full w-full object-cover z-0"
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/258d0f77-2241-4282-b613-8354a7675d1a/web/IN-en-20250721-TRIFECTA-perspective_cadc8408-df6e-4313-a05d-daa9dcac139f_large.jpg"
+        src={IMG_BACKGROUND}
         alt="background"
       />
 
