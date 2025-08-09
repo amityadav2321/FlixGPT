@@ -13,13 +13,13 @@ const Body = () => {
   const { loading } = useSelector((store) => store.user);
 
   useEffect(() => {
-    dispatch(setLoading(true)); // start loading
+    dispatch(setLoading(true)); 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid, email, displayName }));
       } else {
-        //dispatch action
+       
         dispatch(removeUser());
       }
     });
@@ -42,7 +42,7 @@ const Body = () => {
     },
   ]);
 
-  if (loading) return <div className="text-white p-10">Loading...</div>; // or a spinner
+  if (loading) return <div className="text-white p-10">Loading...</div>; 
 
   return <RouterProvider router={appRouter} />;
 };

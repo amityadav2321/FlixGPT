@@ -34,12 +34,12 @@ const Navbar = () => {
           text-white transition-all duration-300 ease-in-out
         `}
       >
-        {/* Left: Logo */}
+        
         <div className="flex items-center space-x-8">
           <img src={logo} alt="FLIXGPT" className="w-28 object-contain" />
         </div>
 
-        {/* Right: Welcome + Buttons */}
+        
         {user && (
           <div className="flex items-center space-x-4">
        {showGptSearch && <select

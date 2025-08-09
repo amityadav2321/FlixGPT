@@ -50,7 +50,7 @@ const GptSearch = () => {
         return;
       }
 
-      // Split and clean movie names
+     
       const movieNames = result
         .split(",")
         .map((m) => m.trim())
@@ -69,7 +69,7 @@ const GptSearch = () => {
 
   return (
     <div className="relative flex justify-center items-start min-h-screen w-full overflow-x-hidden">
-      {/* Background */}
+      
       <img
         src={IMG_BACKGROUND}
         alt="background"
@@ -77,9 +77,9 @@ const GptSearch = () => {
       />
       <div className="absolute inset-0 bg-black opacity-60 z-10"></div>
 
-      {/* Content */}
+    
       <div className="z-20 w-full flex flex-col items-center px-4 pt-20">
-        {/* Search Bar */}
+       
         <div className="w-full max-w-2xl flex border-[2px] border-black rounded-md overflow-hidden bg-white mb-6">
           <input
             type="text"
@@ -98,7 +98,7 @@ const GptSearch = () => {
           </button>
         </div>
 
-        {/* Error Message */}
+        
         {error && <p className="text-red-500 mb-4">{error}</p>}
 
         {/* Movie Recommendations */}

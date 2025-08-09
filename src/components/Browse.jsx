@@ -21,7 +21,7 @@ const Browse = () => {
         <Maincontainer />
       </div>
 
-      {/* Overlapping Movie Row */}
+   
       <div className="relative -mt-340 z-20 bg-gradient-to-b from-transparent to-black">
         <SecondaryContainer />
       </div>

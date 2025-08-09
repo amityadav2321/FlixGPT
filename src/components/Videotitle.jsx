@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaPlay } from 'react-icons/fa'; // Font Awesome Play icon
+import { FaPlay } from 'react-icons/fa'; 
 
 function Videotitle({ title, overview }) {
   return (

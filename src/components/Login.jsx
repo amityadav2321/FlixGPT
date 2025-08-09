@@ -15,43 +15,32 @@ function Login() {
   const email =useRef(null);
   const password= useRef(null);
   const name= useRef(null);
-  React.useEffect(() => {
-  if (email.current && password.current) {
-    email.current.value = "amit@gmail.com";
-    password.current.value = "Amit@123";
-  }
-}, []);
+
 
   const [isSignIn,setSignIn]=useState(true);
   const [errorMessage,setErrorMessage]=useState();
-  // const message=checkValid(email.current.value,password.current.value)
-  // console.log(message);
-  // const handleForm =()=>{
-  //   const message = checkValid(email.current.value,password.current.value);
-  //   console.log(message);
-  // }
   const toggleSignIn= () => {
     setSignIn(!isSignIn);
   }
 
   return (
     <div className="relative h-screen w-screen overflow-hidden">
-      {/* Background Image */}
+     
       <img
         className="absolute h-full w-full object-cover z-0"
         src={IMG_BACKGROUND}
         alt="background"
       />
 
-      {/* Dark Overlay */}
+   
       <div className="absolute inset-0 bg-black/50 z-10"></div>
 
-      {/* Header */}
+  
       <div className="z-30 relative">
         <Header />
       </div>
 
-      {/* Login Form */}
+     
       <form  onSubmit={(e) => {
             e.preventDefault();
             const message = checkValid(email.current.value, password.current.value,isSignIn ? null:name.current.value);
@@ -62,19 +51,18 @@ function Login() {
             if(!isSignIn){
               createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
               .then((userCredential) => {
-                // Signed up 
+               
                 const user = userCredential.user;
                 updateProfile(user, {
                   displayName: name.current.value
                 }).then(() => {
-                  // Profile updated!
+                  
                    const {uid,email,displayName} = auth.currentUser;
                    dispatch(addUser({uid:uid,email:email,displayName:displayName}));
                   
-                  // ...
+                 
                 }).catch((error) => {
-                  // An error occurred
-                  // ...
+                
                   setErrorMessage(error.message)
                 });
                 
@@ -91,7 +79,7 @@ function Login() {
             else{
               signInWithEmailAndPassword(auth, email.current.value, password.current.value)
               .then((userCredential) => {
-                // Signed in 
+                
                 const user = userCredential.user;
                
                 

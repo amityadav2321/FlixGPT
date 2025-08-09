@@ -6,7 +6,7 @@ const GptMovieSuggestion = () => {
 
   if (!movieNames || movieResults.length === 0) return null;
 
-  // Flatten TMDB results and filter valid posters
+
   const allTmdbMovies = movieResults
     .flat()
     .filter(
@@ -18,8 +18,7 @@ const GptMovieSuggestion = () => {
     <div className="w-full px-4 py-6 text-white max-w-7xl mx-auto rounded-lg bg-black/30 backdrop-blur-[3px]">
 
 
-      {/* === Recommended Movies with Posters === */}
-      {/* === Recommended Movies with Posters === */}
+      
 <div className="mb-10">
   <h2 className="text-2xl font-bold mb-4 text-center">Recommended Movies</h2>
   <div className="flex flex-wrap justify-center gap-4 overflow-x-auto hide-scrollbar pb-2">
@@ -46,8 +45,6 @@ const GptMovieSuggestion = () => {
   </div>
 </div>
 
-
-      {/* === Similar Movies Row === */}
       <div>
         <h2 className="text-2xl font-bold mb-4 text-center">Similar Movies</h2>
         <div className="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
@@ -69,8 +66,6 @@ const GptMovieSuggestion = () => {
           ))}
         </div>
       </div>
-
-      {/* Hide Scrollbar Utility */}
       <style>
         {`
           .hide-scrollbar::-webkit-scrollbar {
