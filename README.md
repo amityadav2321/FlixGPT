@@ -32,6 +32,6 @@ It follows **industry-standard React practices** such as **custom hooks**, **con
 ## 📸 Screenshots
 
 | Login Page | GPT Search | Browse Page |
-|-----------|------------|-------------|
-| ![SignIn/SignUp](./screenshots/signin) | ![GPT Search](./screenshots/gpt-search) | ![Browse](./screenshots/browse |
+|------------|------------|-------------|
+| ![SignIn/SignUp](./screenshots/signin.png) | ![GPT Search](./screenshots/gpt-search.png) | ![Browse](./screenshots/browse.png) |
 
