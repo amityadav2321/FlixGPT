@@ -7,7 +7,7 @@ function Maincontainer() {
     const movies = useSelector(store=>store.movie?.nowPlayingMovie);
 
     if(!movies) return ;
-    const mainMovie = movies[12];
+    const mainMovie = movies[8];
     
 
     const {original_title, overview,id} = mainMovie;

@@ -132,7 +132,7 @@ function Login() {
         
         <button
           type="submit"
-          className="w-full bg-red-600 hover:bg-red-700 transition-all duration-200 py-3 rounded font-semibold"
+          className="w-full bg-red-600 hover:bg-red-700 transition-all duration-200 py-3 cursor-pointer rounded font-semibold"
           
         >
           {isSignIn ? "Sign In" : "Sign Up "}
