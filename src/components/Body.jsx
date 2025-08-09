@@ -19,6 +19,7 @@ const Body = () => {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid, email, displayName }));
       } else {
+        //dispatch action
         dispatch(removeUser());
       }
     });

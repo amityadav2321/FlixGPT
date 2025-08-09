@@ -8,7 +8,6 @@ function Maincontainer() {
 
     if(!movies) return ;
     const mainMovie = movies[12];
-    console.log(movies);
     
 
     const {original_title, overview,id} = mainMovie;
